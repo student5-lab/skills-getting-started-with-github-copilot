@@ -81,12 +81,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function showMessage(text, type) {
+    clearTimeout(showMessage.timeoutId);
     messageDiv.textContent = text;
     messageDiv.className = type;
     messageDiv.classList.remove("hidden");
 
     // Hide message after 5 seconds
-    setTimeout(() => {
+    showMessage.timeoutId = setTimeout(() => {
       messageDiv.classList.add("hidden");
     }, 5000);
   }
