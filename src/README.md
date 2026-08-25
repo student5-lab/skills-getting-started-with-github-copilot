@@ -12,7 +12,7 @@ A super simple FastAPI application that allows students to view and sign up for 
 1. Install the dependencies:
 
    ```
-   pip install fastapi uvicorn
+   pip install -r ../requirements.txt
    ```
 
 2. Run the application:
@@ -31,6 +31,26 @@ A super simple FastAPI application that allows students to view and sign up for 
 | ------ | ----------------------------------------------------------------- | ------------------------------------------------------------------- |
 | GET    | `/activities`                                                     | Get all activities with their details and current participant count |
 | POST   | `/activities/{activity_name}/signup?email=student@mergington.edu` | Sign up for an activity                                             |
+| DELETE | `/activities/{activity_name}/participants?email=student@mergington.edu` | Unregister a participant from an activity                           |
+
+## Testing
+
+Backend tests live in a separate top-level `tests` directory and use `pytest`.
+
+Run tests from the repository root:
+
+```
+pytest -q tests
+pytest
+```
+
+### AAA Pattern
+
+All backend tests should use the Arrange-Act-Assert pattern:
+
+1. Arrange: prepare fixtures, inputs, and expected baseline state.
+2. Act: execute exactly one API request for the behavior under test.
+3. Assert: validate status code, response payload, and any state changes.
 
 ## Data Model
 
